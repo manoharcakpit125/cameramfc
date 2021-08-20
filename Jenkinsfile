@@ -1,10 +1,19 @@
 pipeline {
     agent any
-
+tools
+    {
+     maven 'Maven'   
+    }
     stages {
         stage('Build') {
+             when {
+              expression {
+                BRANCH_NAME == master || BRANCH_NAME == MFC520 
+              }
+          }
             steps {
                 echo 'Building..'
+                bat "mvn install"
                 bat 'make' 
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
             }
@@ -20,12 +29,12 @@ pipeline {
             }
         }
         stage('Deploy') {
-            echo 'Deploying..'
           when {
               expression {
                 currentBuild.result == null || currentBuild.result == 'SUCCESS' 
               }
           }
+            echo 'Deploying..'
             steps {
                 bat 'make publish'
             }
