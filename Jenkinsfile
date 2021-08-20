@@ -5,8 +5,8 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    bat 'mvn clean compile'
+                    echo 'Compilation is progresseing'
+                    echo 'Compilation is Done'
                 }
             }
         }
@@ -14,16 +14,16 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    bat 'mvn test'
+                    echo 'Testing is progresseing'
+                    echo 'Testing is Done'
                 }
             }
         }
 
         stage ('Deployment Stage') {
             steps {
-                withMaven(maven : 'maven_3_5_0') {
-                    bat 'mvn deploy'
+                    echo 'Deployment is progresseing'
+                    echo 'Deployment is Done'
                 }
             }
         }
