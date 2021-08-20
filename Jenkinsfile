@@ -19,8 +19,9 @@ pipeline {
             }
 
         stage ('Deployment Stage') {
+           // echo 'Deployment is progresseing'
             steps {
-                    echo 'Deployment is progresseing'
+                     echo 'Deployment is progresseing'
                     echo 'Deployment is Done'
                 }
             }
